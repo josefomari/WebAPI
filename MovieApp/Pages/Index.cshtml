@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+    body {
+        background-color: slategrey;
+    }
+</style>
+
+
+@{
+    <h1 style="text-align:center;"> Movie Collection  </h1>
+
+    <form method="post" class="form-vertical" style="text-align:center;">
+        <input type="text" name="Title" placeholder="Title" required/>
+        <button type="submit" class="btn btn-primary" asp-page-handler="FindMovieByTitle">Search Movie</button>
+
+    </form>
+
+    <form method="post" class="form-vertical" style="text-align:center;">
+        <input type="text" name="Title" placeholder="Title" required />
+        <input type="text" name="Director" placeholder="Director" required />
+        <input type="number" name="YearReleased" placeholder="Year Released" required />
+        <button type="submit" class="btn btn-primary" asp-page-handler="FindMovie">Add Movie</button>
+    </form>
+
+    foreach (var m in Model.Movies)
+    {
+        <h3 style="text-align:center;"> @m.Title - @m.Director @m.YearReleased </h3>
+    }
+
+
+
+}
+
+
+
